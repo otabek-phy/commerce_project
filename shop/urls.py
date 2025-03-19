@@ -4,7 +4,9 @@ from django.urls import path, include
 from shop import views
 
 urlpatterns = [
+
     path('', views.index, name='index'),
-    path('product_list/<int:category_id>', views.index, name='product_list'),
-    path('customer_list/<int:id>', views.customer_list, name='customer_list'),
+    path('products_list/<int:category_id>', views.index, name='products_list_by_category'),
+    path('products/<int:product_id>/', views.product_detail, name='product_detail'),
+    path('customers/', views.customer, name='customers_list'),
 ]

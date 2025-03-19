@@ -1,8 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 
 from shop.models import Category, Product, Customer
-from django.core.paginator import Paginator
-
 
 
 # Create your views here.
@@ -11,25 +9,22 @@ from django.core.paginator import Paginator
 def index(request, category_id=None):
     categories = Category.objects.all()
     products = Product.objects.all()
-
-    paginator = Paginator(products, 2)
-    page_number = request.GET.get('page', 1)
-    page_obj = paginator.get_page(page_number)
-
     if category_id:
-        products = Product.objects.filter(category_id=category_id)
-        return render(request, 'shop/product-list.html', {'products': products})
-
-    context = {
-        'categories': categories,
-        'page_obj': page_obj,
-        'products': products
-    }
+        products = Product.objects.filter(category=category_id)
+        context = {'products': products}
+        return render(request, 'shop/product-list.html', context)
+    context = {'categories': categories, 'products': products}
     return render(request, 'shop/index.html', context)
 
 
+def product_detail(request, product_id):
+    product = Product.objects.get(id=product_id)
+    context = {'product': product}
+    return render(request, 'shop/product-detail.html', context)
 
 
-def customer_list(request):
+
+def customer(request):
     customers = Customer.objects.all()
-    return render(request, 'shop/customers.html', {'customers': customers})
+    context = {'customers': customers}
+    return render(request, 'shop/customers.html', context)

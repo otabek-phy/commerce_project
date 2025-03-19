@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from shop.models import Category, Images ,Product, Customer
+from shop.models import Category, Images, Product, Customer
 
 # Register your models here.
 

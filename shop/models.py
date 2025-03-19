@@ -1,7 +1,7 @@
-from tkinter.tix import IMAGE
+from decimal import Decimal
 
 from django.db import models
-from decimal import Decimal
+
 
 # Create your models here.
 
@@ -14,8 +14,7 @@ class Category(models.Model):
         return self.title
 
     class Meta:
-        verbose_name_plural = 'Categories'
-
+        verbose_name_plural = "Categories"
 
 
 class Product(models.Model):
@@ -28,46 +27,48 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-
     @property
     def discounted_price(self):
         if self.discount > 0:
-            self.price = self.price * Decimal(1 - self.discount / 100)
+            discount_price = self.price * Decimal(1 - self.discount / 100)
+            return Decimal(f'{discount_price}').quantize(Decimal('0.00'))
+
         return Decimal(f'{self.price}').quantize(Decimal('0.00'))
 
+    @property
+    def get_absolute_url(self):
+        primary_image = self.images.all().order_by('my_order')[0]
+        print(primary_image)
+        return primary_image.image.url
 
     def __str__(self):
         return self.name
 
 
-
 class Images(models.Model):
-    image = models.ImageField(upload_to='products/images/')
+    image = models.ImageField(upload_to='product/images/')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images', null=True, blank=True)
+
+    my_order = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return f'{self.product.name} {self.image.url}'
 
     class Meta:
-        verbose_name_plural = 'Images'
+        verbose_name_plural = "Images"
 
 
 
 
+from django.db import models
 
 class Customer(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
-    phone_number = models.CharField(max_length=20, unique=True)
-    address = models.TextField(null=True, blank=True)
-    joined_at = models.DateTimeField(auto_now_add=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    phone = models.CharField(max_length=20)
+    address = models.TextField()
+    joined = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} ({self.email})"
+        return self.name
 
-    class Meta:
-        ordering = ['-joined_at']
-        verbose_name = 'Mijoz'
-        verbose_name_plural = 'Mijozlar'
