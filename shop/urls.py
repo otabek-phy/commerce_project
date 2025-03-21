@@ -1,12 +1,10 @@
 from django.contrib import admin
-from django.urls import path, include
-
-from shop import views
+from django.urls import path
+from shop.views import IndexView, ProductDetailView, CustomerListView
 
 urlpatterns = [
-
-    path('', views.index, name='index'),
-    path('products_list/<int:category_id>', views.index, name='products_list_by_category'),
-    path('products/<int:product_id>/', views.product_detail, name='product_detail'),
-    path('customers/', views.customer, name='customers_list'),
+    path('', IndexView.as_view(), name='index'),
+    path('products_list/<int:pk>/', IndexView.as_view(), name='products_list_by_category'),
+    path('products/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
+    path('customers/', CustomerListView.as_view(), name='customers_list'),
 ]
