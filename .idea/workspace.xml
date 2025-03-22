@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b67a62f-2ccd-4833-a3d2-bf7f9cef2dac" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/shop/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/templates/shop/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/templates/shop/base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/base/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/views.py" afterDir="false" />
     </list>
@@ -21,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -118,6 +122,10 @@
       <workItem from="1742289035244" duration="9078000" />
       <workItem from="1742585918815" duration="586000" />
       <workItem from="1742586658780" duration="12000" />
+      <workItem from="1742586998667" duration="790000" />
+      <workItem from="1742661862289" duration="1032000" />
+      <workItem from="1742663500717" duration="106000" />
+      <workItem from="1742663657785" duration="893000" />
     </task>
     <servers />
   </component>
