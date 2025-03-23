@@ -41,7 +41,7 @@
                                 <div class="position-relative h-sm-100"><a class="d-block h-100"
                                                                            href={% url 'product_detail' product.id %}><img
                                         class="img-fluid fit-cover w-sm-100 h-sm-100 rounded-1 absolute-sm-centered"
-                                        src={{ product.get_absolute_url }} /></a>
+                                        src={{ product.get_absolute_url }} alt=""/></a>
                                     <div class="badge rounded-pill bg-success position-absolute top-0 end-0 me-2 mt-2 fs--2 z-index-2">
                                         New
                                     </div>
@@ -59,16 +59,12 @@
                                         <p class="fs--1 mb-2 mb-md-3">
                                             {{ product.category.title }}</p>
                                         <ul class="list-unstyled d-none d-lg-block">
-                                            <li><span class="fas fa-circle"
-                                                      data-fa-transform="shrink-12"></span><span>16GB RAM</span></li>
-                                            <li><span class="fas fa-circle" data-fa-transform="shrink-12"></span><span>1TB SSD Hard Drive</span>
-                                            </li>
-                                            <li><span class="fas fa-circle" data-fa-transform="shrink-12"></span><span>10-core Intel Xeon</span>
-                                            </li>
-                                            <li><span class="fas fa-circle"
-                                                      data-fa-transform="shrink-12"></span><span>Mac OS</span></li>
-                                            <li><span class="fas fa-circle"
-                                                      data-fa-transform="shrink-12"></span><span>Secured</span></li>
+                                            {% for attribute in product.attributes.all %}
+                                                <li><span class="fas fa-circle"
+                                                          data-fa-transform="shrink-12"></span><span>{{ attribute.attribute_value_id.attribute_value }}</span>
+                                                </li>
+                                            {% endfor %}
+
                                         </ul>
                                     </div>
                                     <div class="col-lg-4 d-flex justify-content-between flex-column">

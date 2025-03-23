@@ -315,7 +315,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="{% url 'customers_list' %}"
+                                <li class="nav-item"><a class="nav-link" href="{% url 'customers' %}"
                                                         aria-expanded="false">
                                     <div class="d-flex align-items-center"><span
                                             class="nav-link-text ps-1">Customers</span>
@@ -467,7 +467,7 @@
                                             <!-- more inner pages-->
                                         </li>
                                         <li class="nav-item"><a class="nav-link"
-                                                                href="{% url 'register' %}"
+                                                                href="../../../pages/authentication/simple/register.html"
                                                                 aria-expanded="false">
                                             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Register</span>
                                             </div>
@@ -2312,10 +2312,6 @@
             {% block product_list_content %}
             {% endblock %}
             {% block product_detail_content %}
-            {% endblock %}
-            {% block customers_content %}
-            {% endblock %}
-            {% block register_content %}
             {% endblock %}
             <footer class="footer">
                 <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
